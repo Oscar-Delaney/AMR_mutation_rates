@@ -7,3 +7,5 @@ We implement a mathematical and computational model of AMR evolution, and show t
 We implement our simulations in R, and also perform analytic approximations in Mathematica. A public copy of the Mathematica notebook is also available [here](https://www.wolframcloud.com/obj/odelaney/Published/AMR_mutation_rates.nb)
 
 Feel free to contact me with questions or bugs at o [dot] delaney [at] uq [dot] net [dot] au.
+
+The Zenodo release is available at https://zenodo.org/doi/10.5281/zenodo.11112244
