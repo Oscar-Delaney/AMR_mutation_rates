@@ -228,6 +228,7 @@ ggplot(kappa_results, aes(x = log2(kappa))) +
 
 # save the file
 ggsave(filename = paste0(dir, "beta.pdf"), width = 10, height = 10)
+save(kappa_sims, file = paste0(dir, "beta.rdata"))
 
 
 # Now a graph for zeta varying
@@ -262,3 +263,4 @@ ggplot(zeta_results, aes(x = log2(zeta))) +
 
 # save the file
 ggsave(filename = paste0(dir, "zeta.pdf"), width = 10, height = 10)
+save(zeta_sims, file = paste0(dir, "zeta.rdata"))
