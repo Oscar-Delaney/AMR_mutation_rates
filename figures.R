@@ -198,6 +198,7 @@ run_and_save("kappa_low", args = list(kappa = 0.2))
 run_and_save("costs", args = list(cost = 0.1))
 run_and_save("net_kappa", args = list(net = -0.1, kappa = 3))
 run_and_save("pk", args = list(gap = 12, d = 0.15, net = -0.2), theory = FALSE)
+run_and_save("toxicity", args = list(c = 5, rep = 300), pare = TRUE)
 
 # Create two additional special graphs for the main text
 # First a graph where kappa varies
