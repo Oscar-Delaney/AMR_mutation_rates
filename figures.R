@@ -18,7 +18,7 @@ target_hit <- function(sol, target = 1, strains = c("N_S", "N_A", "N_B", "N_AB")
 }
 
 # Run many simulations in sequence with set parameters
-run_sims <- function(summary, config_only = FALSE, rep = 1e3, zeta = 1e9,
+run_sims <- function(summary, config_only = FALSE, rep = 1e3, zeta = 1e9, alpha = 0,
 c = 2, kappa = 1, cost = 0, net = 0, d = 0, gap = 1e4, zeta_rand = FALSE) {
     pb <- txtProgressBar(min = 0, max = nrow(summary), style = 3)
     # Run a simulation for each set of parameter values supplied in summary
@@ -36,9 +36,9 @@ c = 2, kappa = 1, cost = 0, net = 0, d = 0, gap = 1e4, zeta_rand = FALSE) {
         # Run the actual simualtion
         data <- simulate(
             init = c(N_S = init_S, N_A = 0, N_B = 0, N_AB = 0),
-            R0 = 1e10,
-            k = 0,
-            alpha = 0,
+            R0 = 1e9,
+            k = 1e8 * alpha,
+            alpha = alpha,
             supply = 1e8,
             mu = c(1, 1 - cost, 1 - cost, 1 - 2 * cost),
             bcidal_A = summary$cidal_A[i],
@@ -199,6 +199,7 @@ run_and_save("costs", args = list(cost = 0.1))
 run_and_save("net_kappa", args = list(net = -0.1, kappa = 3))
 run_and_save("pk", args = list(gap = 12, d = 0.15, net = -0.2), theory = FALSE)
 run_and_save("toxicity", args = list(c = 5, rep = 300), pare = TRUE)
+run_and_save("resources", args = list(alpha = 1, rep = 300), theory = FALSE)
 
 # Create two additional special graphs for the main text
 # First a graph where kappa varies
